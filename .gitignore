@@ -219,3 +219,7 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/linux,macos,windows,phpstorm,jetbrains+all
 
+# ignoring things not inclueded in generated .gitignore
+
+AT.zip
+angabe.pdf
