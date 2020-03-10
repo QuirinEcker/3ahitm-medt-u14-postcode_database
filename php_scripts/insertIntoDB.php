@@ -21,12 +21,22 @@
  * accuracy
 */
 
+require ("dbConfig.php");
+set_time_limit(60);
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 $file_array = file("../AT/AT.txt");
-$sql = "INSERT INTO `geo_names_org` (`country_code`, `postal_code`, `place_name`, `admin_name1`, `admin_name2`, `admin_name3`) VALUES (?, ?, ?, ?, ?, ?);";
+$sql = "INSERT INTO `postcodes_database` (`country_code`, `postal_code`, `place_name`, `admin_name1`, `admin_name2`, `admin_name3`) VALUES (?, ?, ?, ?, ?, ?);";
 $stmt = $conn->prepare($sql);
+$stmt->bind_param("ssssssssssss", $cc, $pc, $pn, $an1, $ac1, $an2, $ac2, $an3, $ac3, $lat, $long, $accuracy)
 
 foreach ($file_array AS $currentLine) {
     $line_array = explode("\t", $currentLine);
+
 }
 
 ?>
